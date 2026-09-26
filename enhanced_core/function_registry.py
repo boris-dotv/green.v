@@ -218,6 +218,9 @@ class FinancialFunctionRegistry:
             if not isinstance(result, list):
                 result = list(result)
             return [dict(zip(row.keys(), row)) if hasattr(row, 'keys') else row for row in result]
+        elif self.db is None:
+            logger.error(f"No database or osworld backend configured; cannot execute SQL: {sql}")
+            return []
         else:
             cursor = self.db.cursor()
             try:

@@ -320,3 +320,9 @@ Newest entries are at the bottom.
 - **Blocked by:** rejected by gate: edit 0: 'old' occurs 0 times in enhanced_core/function_registry.py (need exactly 1)
 - **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Harden enhanced_core/rejection_detector.py: log successful parses at debug level to reduce log noise; Update tests/test_function_registry_sql.py::TestExecuteSqlWithoutBackend to assert the new empty-list contract instead of AttributeError
 
+## 2026-09-26 17:40 UTC — Guard _execute_sql when no db/osworld backend configured
+- **Type:** robustness
+- **Files:** enhanced_core/function_registry.py, tests/test_function_registry_sql.py
+- **Why:** FinancialFunctionRegistry._execute_sql falls through to self.db.cursor() when neither osworld nor db is configured, raising AttributeError: 'NoneType' object has no attribute 'cursor'. This is the exact issue logged as a next idea and pinned by tests/test_function_registry_sql.py::TestExecuteSqlWithoutBackend. Returning an empty list matches the module's existing error contract (SQL errors already return []), so callers that check 'if not result' keep working while the crash disappears. The existing test that asserts AttributeError is updated to the new deliberate contract.
+- **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Harden enhanced_core/rejection_detector.py: log successful parses at debug level to reduce log noise; Add a test that FinancialFunctionRegistry.execute returns {'error': ...} for an unknown function name
+

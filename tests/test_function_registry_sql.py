@@ -59,12 +59,16 @@ class TestExecuteSqlWithSqlite(unittest.TestCase):
 
 
 class TestExecuteSqlWithoutBackend(unittest.TestCase):
-    def test_no_db_and_no_osworld_raises_attribute_error(self):
-        # _execute_sql assumes a backend exists; document the current
-        # contract so a future guard can be added deliberately.
+    def test_no_db_and_no_osworld_returns_empty_list(self):
+        # With no backend configured, _execute_sql must degrade to an empty
+        # result (same contract as a SQL error) instead of raising
+        # AttributeError on self.db.cursor().
         registry = FinancialFunctionRegistry()
-        with self.assertRaises(AttributeError):
-            registry._execute_sql("SELECT 1")
+        self.assertEqual(registry._execute_sql("SELECT 1"), [])
+
+    def test_no_backend_company_lookup_returns_none(self):
+        registry = FinancialFunctionRegistry()
+        self.assertIsNone(registry._get_company_id("ZA Bank"))
 
 
 class TestCalculateConcentrationParsing(unittest.TestCase):
