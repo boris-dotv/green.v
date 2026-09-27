@@ -353,3 +353,9 @@ Newest entries are at the bottom.
 - **Blocked by:** rejected by gate: new_file 0: tests/test_rejection_detector_llm_errors.py already exists
 - **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Harden enhanced_core/rejection_detector.py: log successful parses at debug level to reduce log noise; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown
 
+## 2026-09-27 22:44 UTC — Add tests for RejectionDetector prompt contract and digit boundaries
+- **Type:** tests
+- **Files:** tests/test_rejection_detector_prompt_contract.py
+- **Why:** The evolution log repeatedly lists rejection_detector coverage as a next idea, and the existing suites cover heuristics, digit precedence, empty output and llm_caller errors, but not the prompt contract itself (scope keywords, single-query interpolation, temperature) nor the \b[01]\b boundary behaviour for multi-digit or embedded numbers. These tests pin the observable prompt/parse contract so a future refactor of the prompt template or regex cannot silently change decisions.
+- **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Harden enhanced_core/rejection_detector.py: log successful parses at debug level to reduce log noise; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown
+
