@@ -348,3 +348,8 @@ Newest entries are at the bottom.
 - **Blocked by:** rejected by gate: new_file 0: tests/test_rejection_detector_heuristics.py already exists
 - **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Harden enhanced_core/rejection_detector.py: log successful parses at debug level to reduce log noise; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown
 
+## 2026-09-27 18:00 UTC — Reflection: no code change landed
+- **Attempted:** Add tests for RejectionDetector llm_caller error propagation
+- **Blocked by:** rejected by gate: new_file 0: tests/test_rejection_detector_llm_errors.py already exists
+- **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Harden enhanced_core/rejection_detector.py: log successful parses at debug level to reduce log noise; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown
+
