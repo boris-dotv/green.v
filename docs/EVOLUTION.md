@@ -343,3 +343,8 @@ Newest entries are at the bottom.
 - **Blocked by:** rejected by gate: tests/test_function_registry_concentration.py failed: ERROR: test_top_n_exceeding_available_rows_is_clamped (tests.test_function_registry_concentration.TestCalculateConcentration.test_top_n_exceeding_
 - **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Harden enhanced_core/rejection_detector.py: log successful parses at debug level to reduce log noise; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown
 
+## 2026-09-27 13:27 UTC — Reflection: no code change landed
+- **Attempted:** Add tests for rejection_detector keyword heuristics
+- **Blocked by:** rejected by gate: new_file 0: tests/test_rejection_detector_heuristics.py already exists
+- **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Harden enhanced_core/rejection_detector.py: log successful parses at debug level to reduce log noise; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown
+
