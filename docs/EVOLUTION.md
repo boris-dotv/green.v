@@ -391,3 +391,9 @@ Newest entries are at the bottom.
 - **Blocked by:** rejected by gate: tests/test_rejection_detector_digit_token_boundaries.py failed: FAIL: test_ten_contains_standalone_zero_and_rejects (tests.test_rejection_detector_digit_token_boundaries.TestMultiDigitNumbers.test_ten
 - **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Harden enhanced_core/rejection_detector.py: log successful parses at debug level to reduce log noise; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown
 
+## 2026-09-29 20:22 UTC — Add tests for RejectionDetector digit-token boundary parsing
+- **Type:** tests
+- **Files:** tests/test_rejection_detector_digit_token_boundaries.py
+- **Why:** The evolution log repeatedly lists rejection_detector digit-token boundary coverage as a next idea, and two prior attempts were rejected because they wrongly assumed \b[01]\b does not match digits embedded in multi-digit numbers. Reading the implementation confirms re.search(r'\b([01])\b', ...) matches the '0' inside '10' and the '1' inside '21', so these tests pin the real observable contract (first standalone-ish digit token wins, embedded digits in words like 'a1b' do not match) so a future refactor of the regex cannot silently change decisions.
+- **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Harden enhanced_core/rejection_detector.py: log successful parses at debug level to reduce log noise; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown
+
