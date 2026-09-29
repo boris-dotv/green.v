@@ -381,3 +381,8 @@ Newest entries are at the bottom.
 - **Blocked by:** rejected by gate: tests/test_rejection_detector_digit_token_boundaries.py failed: FAIL: test_embedded_digit_in_word_is_not_a_decision (tests.test_rejection_detector_digit_token_boundaries.TestNonStandaloneDigitsFallThr
 - **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Harden enhanced_core/rejection_detector.py: log successful parses at debug level to reduce log noise; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown
 
+## 2026-09-29 07:44 UTC — Reflection: no code change landed
+- **Attempted:** Test RejectionDetector digit-token boundary parsing
+- **Blocked by:** rejected by gate: tests/test_rejection_detector_digit_token_boundaries.py failed: FAIL: test_ten_contains_standalone_zero_and_rejects (tests.test_rejection_detector_digit_token_boundaries.TestMultiDigitNumbers.test_ten
+- **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Harden enhanced_core/rejection_detector.py: log successful parses at debug level to reduce log noise; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown
+
