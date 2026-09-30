@@ -403,3 +403,8 @@ Newest entries are at the bottom.
 - **Why:** The evolution log's next-ideas list repeatedly points at rejection_detector coverage, and existing suites cover digit parsing, keyword fallback, None output and llm_caller errors, but not the prompt template itself: the scope keywords, the single interpolation of the query, and the temperature passed to llm_caller. These tests pin the observable prompt contract so a future refactor of the template cannot silently drop scope rules or change the sampling temperature, and they verify the query is interpolated verbatim (including braces and newlines).
 - **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Harden enhanced_core/rejection_detector.py: log successful parses at debug level to reduce log noise; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown
 
+## 2026-09-30 07:48 UTC — Reflection: no code change landed
+- **Attempted:** Add tests for RejectionDetector heuristic keyword precedence
+- **Blocked by:** rejected by gate: new_file 0: tests/test_rejection_detector_heuristic_precedence.py already exists
+- **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Harden enhanced_core/rejection_detector.py: log successful parses at debug level to reduce log noise; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown
+
