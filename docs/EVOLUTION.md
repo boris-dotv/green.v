@@ -408,3 +408,9 @@ Newest entries are at the bottom.
 - **Blocked by:** rejected by gate: new_file 0: tests/test_rejection_detector_heuristic_precedence.py already exists
 - **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Harden enhanced_core/rejection_detector.py: log successful parses at debug level to reduce log noise; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown
 
+## 2026-09-30 14:29 UTC — Add tests for RejectionDetector unparseable-output logging
+- **Type:** tests
+- **Files:** tests/test_rejection_detector_unparseable_logging.py
+- **Why:** The evolution log's next-ideas list keeps pointing at rejection_detector coverage, and existing suites cover digit parsing, keyword fallback, None output, prompt template and llm_caller errors, but not the final unparseable branch: when the LLM reply has no bare 0/1 token and no accept/reject keyword, should_accept logs a warning containing the raw repr and defaults to accept. That branch is the only place where the raw LLM output is surfaced for debugging, so a future refactor could silently drop the warning or change the safe default. These tests pin the observable contract (warning emitted 
+- **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for enhanced_core/arbitrator.py tie-breaking when both agents disagree
+
