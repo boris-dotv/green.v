@@ -43,6 +43,12 @@ class QueryRewriter:
         rewritten = self.llm_caller(prompt, temperature=0.3)
 
         # 防止误改写
+        if not isinstance(rewritten, str):
+            logger.warning(
+                f"   ✏️  Non-string rewrite reply ({type(rewritten).__name__}), "
+                f"keeping original query"
+            )
+            return query.strip() if query else query
         if not rewritten or self._is_bad_rewrite(query, rewritten):
             logger.info(f"   ✏️  No rewrite needed: {query}")
             return query.strip() if query else query
