@@ -448,3 +448,9 @@ Newest entries are at the bottom.
 - **Blocked by:** rejected by gate: tests/test_query_rewriter_bad_rewrite_guard.py failed: FAIL: test_guard_uses_distinct_chars_not_length (tests.test_query_rewriter_bad_rewrite_guard.TestBadRewriteGuard.test_guard_uses_distinct_chars_n
 - **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for enhanced_core/query_rewriter.py when query is whitespace-only and history is present (no LLM call expected)
 
+## 2026-10-02 10:13 UTC — Add tests for QueryRewriter whitespace-only query guard
+- **Type:** tests
+- **Files:** tests/test_query_rewriter_whitespace_query.py
+- **Why:** The evolution log's next-ideas list asks for coverage of QueryRewriter when the query is whitespace-only and history is present, expecting no LLM call. Reading rewrite() confirms the first guard returns query.strip() (empty string) before any history check or llm_caller invocation, and that a None query is returned as-is. Existing suites cover non-string replies, good rewrites and the no-history short circuit but not this guard, so a future refactor could silently start calling the LLM on empty input.
+- **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for enhanced_core/query_rewriter.py bad-rewrite overlap guard using distinct-character counts (overlap < len(original)/4) rather than length
+
