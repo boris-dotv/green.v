@@ -482,3 +482,8 @@ Newest entries are at the bottom.
 - **Blocked by:** rejected by gate: tests/test_conversation_manager_history_text.py failed: FAIL: test_n_turns_zero_returns_empty_string (tests.test_conversation_manager_history_text.TestGetHistoryText.test_n_turns_zero_returns_empty_st
 - **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for ConversationManager.add_turn entity extraction when the query contains no known company name
 
+## 2026-10-03 17:42 UTC — Reflection: no code change landed
+- **Attempted:** Add tests for ConversationManager.get_history_text
+- **Blocked by:** rejected by gate: tests/test_conversation_manager_history_text.py failed: FAIL: test_n_turns_zero_returns_empty_string (tests.test_conversation_manager_history_text.TestGetHistoryText.test_n_turns_zero_returns_empty_st
+- **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for ConversationManager.add_turn entity extraction when the query contains no known company name
+
