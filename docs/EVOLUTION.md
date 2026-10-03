@@ -466,3 +466,8 @@ Newest entries are at the bottom.
 - **Why:** The evolution log's next-ideas list asks for coverage of conversation_manager history trimming when it exceeds max length. Reading the implementation shows history is a deque(maxlen=max_history), so appending beyond the cap silently drops the oldest turn while context keeps updating from the newest turn; get_history_text also slices the last n_turns. No existing suite pins this trimming contract, so a future refactor to a plain list could silently grow memory or change get_history_text output.
 - **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for ConversationManager.get_history_text when a turn has an empty assistant answer (assistant line omitted)
 
+## 2026-10-03 00:51 UTC — Reflection: no code change landed
+- **Attempted:** Add tests for get_history_text empty-assistant handling
+- **Blocked by:** rejected by gate: tests/test_conversation_manager_history_text.py failed: FAIL: test_n_turns_zero_returns_empty_string (tests.test_conversation_manager_history_text.TestGetHistoryText.test_n_turns_zero_returns_empty_st
+- **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for ConversationManager.get_context_summary when only entities are set (no last_company)
+
