@@ -487,3 +487,9 @@ Newest entries are at the bottom.
 - **Blocked by:** rejected by gate: tests/test_conversation_manager_history_text.py failed: FAIL: test_n_turns_zero_returns_empty_string (tests.test_conversation_manager_history_text.TestGetHistoryText.test_n_turns_zero_returns_empty_st
 - **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for ConversationManager.add_turn entity extraction when the query contains no known company name
 
+## 2026-10-03 20:26 UTC — Add tests for ConversationManager.get_history_text
+- **Type:** tests
+- **Files:** tests/test_conversation_manager_history_text.py
+- **Why:** The evolution log repeatedly lists get_history_text coverage as a next idea; two prior attempts were rejected because they asserted an n_turns=0 behaviour that does not match the implementation. Reading the code shows list(self.history)[-n_turns:] with n_turns=0 yields the full history (not an empty string), and the assistant line is omitted only when turn.assistant is falsy. These tests pin the real contract, including the empty-assistant and n_turns=0 cases, so a future refactor cannot silently change the prompt history format.
+- **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for ConversationManager.add_turn entity extraction when the query contains no known company name
+
