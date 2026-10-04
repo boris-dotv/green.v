@@ -514,3 +514,9 @@ Newest entries are at the bottom.
 - **Blocked by:** rejected by gate: tests/test_conversation_manager_entity_boundary.py:33: expected ':' (change would break syntax)
 - **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for ConversationManager.add_turn when the query contains multiple known companies (verify actual order semantics before asserting)
 
+## 2026-10-04 20:49 UTC — Add tests for ConversationManager multi-company entity order
+- **Type:** tests
+- **Files:** tests/test_conversation_manager_multi_entity.py
+- **Why:** The evolution log repeatedly lists multi-company entity extraction as a next idea, and two prior attempts were rejected by the gate because they asserted an order that does not match the implementation. Reading _update_context shows the loop over the fixed companies list breaks after the first match, so only the first company in the list order (not the query order) is recorded and entities never holds more than one entry per turn. These tests pin that real contract so a future refactor of the extraction loop cannot silently change context tracking that feeds prompts.
+- **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for ConversationManager.add_turn when a known company name appears as a substring of a longer word (word-boundary behaviour)
+
