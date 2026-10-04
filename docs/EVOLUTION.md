@@ -504,3 +504,8 @@ Newest entries are at the bottom.
 - **Blocked by:** rejected by gate: tests/test_conversation_manager_multi_entity.py failed: ERROR: test_reversed_query_order_is_respected (tests.test_conversation_manager_multi_entity.TestMultiEntityExtraction.test_reversed_query_order_
 - **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for ConversationManager.add_turn when the query contains a known company name as a substring of a longer word (word-boundary behaviour)
 
+## 2026-10-04 13:36 UTC — Reflection: no code change landed
+- **Attempted:** Add tests for ConversationManager multi-company entity order
+- **Blocked by:** rejected by gate: tests/test_conversation_manager_multi_entity.py failed: FAIL: test_two_companies_in_query_are_both_recorded (tests.test_conversation_manager_multi_entity.TestMultiEntityExtraction.test_two_companies_i
+- **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for ConversationManager.add_turn when a known company name appears as a substring of a longer word (word-boundary behaviour)
+
