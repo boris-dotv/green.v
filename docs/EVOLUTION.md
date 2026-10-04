@@ -509,3 +509,8 @@ Newest entries are at the bottom.
 - **Blocked by:** rejected by gate: tests/test_conversation_manager_multi_entity.py failed: FAIL: test_two_companies_in_query_are_both_recorded (tests.test_conversation_manager_multi_entity.TestMultiEntityExtraction.test_two_companies_i
 - **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for ConversationManager.add_turn when a known company name appears as a substring of a longer word (word-boundary behaviour)
 
+## 2026-10-04 17:56 UTC — Reflection: no code change landed
+- **Attempted:** Add tests for ConversationManager entity word-boundary behaviour
+- **Blocked by:** rejected by gate: tests/test_conversation_manager_entity_boundary.py:33: expected ':' (change would break syntax)
+- **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for ConversationManager.add_turn when the query contains multiple known companies (verify actual order semantics before asserting)
+
