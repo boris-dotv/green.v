@@ -499,3 +499,8 @@ Newest entries are at the bottom.
 - **Why:** The evolution log repeatedly lists add_turn entity extraction as a next idea. Reading conversation_manager.py shows add_turn extracts known company names from the query into self.context['entities'] and sets last_company, while queries with no known company leave entities untouched. No existing suite pins this contract, so a refactor of the extraction regex or the known-company list could silently break context tracking that feeds prompts.
 - **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for ConversationManager.add_turn when the query contains multiple known companies (order of entities)
 
+## 2026-10-04 07:38 UTC — Reflection: no code change landed
+- **Attempted:** Add tests for ConversationManager multi-company entity order
+- **Blocked by:** rejected by gate: tests/test_conversation_manager_multi_entity.py failed: ERROR: test_reversed_query_order_is_respected (tests.test_conversation_manager_multi_entity.TestMultiEntityExtraction.test_reversed_query_order_
+- **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for ConversationManager.add_turn when the query contains a known company name as a substring of a longer word (word-boundary behaviour)
+
