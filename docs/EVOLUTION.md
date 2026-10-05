@@ -525,3 +525,8 @@ Newest entries are at the bottom.
 - **Blocked by:** rejected by gate: new_file 0: tests/test_rejection_detector_prompt_contract.py already exists
 - **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for ConversationManager.add_turn when a known company name appears as a substring of a longer word (word-boundary behaviour)
 
+## 2026-10-05 08:04 UTC — Reflection: no code change landed
+- **Attempted:** Add tests for ConversationManager word-boundary entity matching
+- **Blocked by:** rejected by gate: tests/test_conversation_manager_entity_boundary.py failed: FAIL: test_boundary_match_is_case_insensitive (tests.test_conversation_manager_entity_boundary.TestEntityBoundary.test_boundary_match_is_case
+- **Next:** Verify the exact regex in conversation_manager._update_context before adding more boundary tests; Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines; Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown
+
