@@ -530,3 +530,9 @@ Newest entries are at the bottom.
 - **Blocked by:** rejected by gate: tests/test_conversation_manager_entity_boundary.py failed: FAIL: test_boundary_match_is_case_insensitive (tests.test_conversation_manager_entity_boundary.TestEntityBoundary.test_boundary_match_is_case
 - **Next:** Verify the exact regex in conversation_manager._update_context before adding more boundary tests; Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines; Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown
 
+## 2026-10-05 18:59 UTC — Add tests for run.py menu choice validation
+- **Type:** tests
+- **Files:** tests/test_run_menu.py
+- **Why:** run.py's interactive menu validation (non-digit input, out-of-range digits, empty input defaulting to 0, and the isatty fallback) is pure logic that no existing suite covers; a refactor of the guard could silently break the CLI entry point. The tests stub stdin/stdout and patch the run_* handlers so no demo or network code is executed.
+- **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for run.py print_menu banner/menu text so the CLI contract is pinned
+
