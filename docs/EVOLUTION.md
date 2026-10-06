@@ -546,3 +546,8 @@ Newest entries are at the bottom.
 - **Blocked by:** rejected by gate: tests/test_run_banner_menu.py failed: FAIL: test_banner_contains_title_lines (tests.test_run_banner_menu.TestPrintBanner.test_banner_contains_title_lines) | self.assertIn('FinTalk.AI - Enhanced Financ
 - **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for run.py run_demo/run_test/run_main lazy imports (patch sys.modules to assert the right module is imported)
 
+## 2026-10-06 16:25 UTC — Reflection: no code change landed
+- **Attempted:** Add tests for run.py banner and menu text
+- **Blocked by:** rejected by gate: tests/test_run_banner_menu.py failed: FAIL: test_banner_has_four_lines (tests.test_run_banner_menu.TestPrintBanner.test_banner_has_four_lines) | self.assertEqual(len(text.splitlines()), 4) | Assertion
+- **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for run.py run_demo/run_test/run_main lazy imports (patch sys.modules to assert the right module is imported)
+
