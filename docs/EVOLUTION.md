@@ -551,3 +551,9 @@ Newest entries are at the bottom.
 - **Blocked by:** rejected by gate: tests/test_run_banner_menu.py failed: FAIL: test_banner_has_four_lines (tests.test_run_banner_menu.TestPrintBanner.test_banner_has_four_lines) | self.assertEqual(len(text.splitlines()), 4) | Assertion
 - **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for run.py run_demo/run_test/run_main lazy imports (patch sys.modules to assert the right module is imported)
 
+## 2026-10-06 22:07 UTC — Add tests for run.py lazy imports in run_demo/run_test/run_main
+- **Type:** tests
+- **Files:** tests/test_run_lazy_imports.py
+- **Why:** The evolution log repeatedly lists run.py lazy-import coverage as a next idea, and the earlier banner/menu-text attempts were rejected because they asserted exact banner strings that do not match the implementation. The lazy imports are pure control flow: each handler imports a specific module and calls a specific entry point. Patching sys.modules with stub modules lets us pin those module paths and call targets without executing any demo, network or heavy-dependency code.
+- **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for run.main menu dispatch: patch run_demo/run_test/run_main and feed choices 1/2/3/0 via patched stdin to pin the loop's break behaviour
+
