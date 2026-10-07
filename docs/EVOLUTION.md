@@ -569,3 +569,8 @@ Newest entries are at the bottom.
 - **Why:** The evolution log lists run.main non-tty fallback as the next idea: when sys.stdin.isatty() is False, main() must default the choice to '0' and exit immediately without dispatching any handler. This is the guard that keeps the CLI from hanging in piped/CI environments, and no existing suite pins it. The tests patch sys.stdin with a non-tty StringIO and assert no handler runs and the loop terminates.
 - **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for run.main KeyboardInterrupt handling in the __main__ guard (patch run.main to raise KeyboardInterrupt)
 
+## 2026-10-07 18:15 UTC — Reflection: no code change landed
+- **Attempted:** Add tests for run.py __main__ KeyboardInterrupt and error guard
+- **Blocked by:** rejected by gate: tests/test_run_main_guard.py failed: FAIL: test_generic_exception_exits_with_code_one (tests.test_run_main_guard.TestMainGuard.test_generic_exception_exits_with_code_one) | self.assertEqual(code, 1) |
+- **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for run.py print_banner/print_menu output shape (count lines, assert key substrings) now that dispatch and guard are pinned
+
