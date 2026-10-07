@@ -574,3 +574,8 @@ Newest entries are at the bottom.
 - **Blocked by:** rejected by gate: tests/test_run_main_guard.py failed: FAIL: test_generic_exception_exits_with_code_one (tests.test_run_main_guard.TestMainGuard.test_generic_exception_exits_with_code_one) | self.assertEqual(code, 1) |
 - **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for run.py print_banner/print_menu output shape (count lines, assert key substrings) now that dispatch and guard are pinned
 
+## 2026-10-07 23:57 UTC — Reflection: no code change landed
+- **Attempted:** Add tests for run.py print_banner/print_menu output shape
+- **Blocked by:** rejected by gate: tests/test_run_banner_menu.py failed: FAIL: test_banner_border_lines_are_rockets (tests.test_run_banner_menu.TestPrintBanner.test_banner_border_lines_are_rockets) | self.assertEqual(lines[0], '\U0001f
+- **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for run.py __main__ guard: patch run.main to raise KeyboardInterrupt and assert no sys.exit, then raise a generic Exception and assert sys.exit(1) is called
+
