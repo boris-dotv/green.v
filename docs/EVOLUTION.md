@@ -563,3 +563,9 @@ Newest entries are at the bottom.
 - **Why:** The evolution log repeatedly lists run.main menu dispatch as a next idea. main() is pure control flow: it validates the choice, dispatches to run_demo/run_test/run_main, and breaks out of the loop. No existing suite pins this behaviour, so a refactor of the guard or the break statements could silently break the CLI entry point. The tests patch the handlers and feed input via a patched stdin so no demo or network code runs.
 - **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for run.main non-tty fallback: patch sys.stdin.isatty to False and assert the loop exits immediately
 
+## 2026-10-07 10:45 UTC — Add tests for run.main non-tty fallback exit
+- **Type:** tests
+- **Files:** tests/test_run_non_tty.py
+- **Why:** The evolution log lists run.main non-tty fallback as the next idea: when sys.stdin.isatty() is False, main() must default the choice to '0' and exit immediately without dispatching any handler. This is the guard that keeps the CLI from hanging in piped/CI environments, and no existing suite pins it. The tests patch sys.stdin with a non-tty StringIO and assert no handler runs and the loop terminates.
+- **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for run.main KeyboardInterrupt handling in the __main__ guard (patch run.main to raise KeyboardInterrupt)
+
