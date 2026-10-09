@@ -609,3 +609,9 @@ Newest entries are at the bottom.
 - **Blocked by:** rejected by gate: tests/test_run_banner_menu.py failed: FAIL: test_banner_border_lines_are_rockets (tests.test_run_banner_menu.TestPrintBanner.test_banner_border_lines_are_rockets) | self.assertEqual(lines[0], '\U0001f
 - **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for run.py __main__ guard: patch run.main to raise KeyboardInterrupt and assert no sys.exit, then raise a generic Exception and assert sys.exit(1) is called
 
+## 2026-10-09 22:06 UTC — Add tests for ConversationManager.clear and get_stats
+- **Type:** tests
+- **Files:** tests/test_conversation_manager_clear_stats.py
+- **Why:** conversation_manager.py has extensive test coverage for history, context, entity extraction and trimming, but clear() and get_stats() are untested. clear() must reset both history and every context key (including the ones not read by get_context_summary) and return self for chaining; get_stats() must report counts derived from history/context/slots. A regression in either would silently leak stale context between sessions, so pinning them is worthwhile.
+- **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for run.py __main__ guard: patch run.main to raise KeyboardInterrupt and assert no sys.exit, then raise a generic Exception and assert sys.exit(1) is called
+
