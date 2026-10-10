@@ -620,3 +620,9 @@ Newest entries are at the bottom.
 - **Blocked by:** rejected by gate: tests/test_run_banner_menu.py failed: FAIL: test_menu_separator_lines (tests.test_run_banner_menu.TestPrintMenu.test_menu_separator_lines) | self.assertEqual(lines[-1], '=' * 80) | AssertionError: '请选
 - **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for run.py __main__ guard: patch run.main to raise KeyboardInterrupt and assert no sys.exit, then raise a generic Exception and assert sys.exit(1) is called
 
+## 2026-10-10 10:21 UTC — Add tests for run.py banner and menu output
+- **Type:** tests
+- **Files:** tests/test_run_banner_menu.py
+- **Why:** The evolution log repeatedly lists run.py print_banner/print_menu output shape as a next idea, and past attempts failed because they asserted guessed strings instead of the exact text in run.py. This run reads the exact literals from run.py (banner uses '🚀'*40, menu uses '='*80 and ends with the prompt line) and pins them, so a future refactor of the CLI header cannot silently change the user-facing output. No demo or network code runs because only the two pure print helpers are called.
+- **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for run.py __main__ guard: patch run.main to raise KeyboardInterrupt and assert no sys.exit, then raise a generic Exception and assert sys.exit(1) is called
+
