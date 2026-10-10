@@ -631,3 +631,9 @@ Newest entries are at the bottom.
 - **Blocked by:** rejected by gate: tests/test_run_main_guard.py failed: FAIL: test_generic_exception_exits_with_code_one (tests.test_run_main_guard.TestMainGuard.test_generic_exception_exits_with_code_one) | main_mock.assert_called_onc
 - **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for formula.py edge cases (division by zero, missing keys) if not already covered
 
+## 2026-10-10 20:59 UTC — Add tests for formula.py edge cases and variable substitution
+- **Type:** tests
+- **Files:** tests/test_formula_edge_cases.py
+- **Why:** formula.py is the pure-logic core used by the orchestrator to compute financial ratios, but tests/test_formula.py only covers a subset of behaviour. The variable-substitution path in calculate_from_expression has subtle rules (longest-key-first ordering, word-boundary matching, NaN on leftover tokens, NaN on division by zero) that are easy to break during refactors and are not pinned by the existing suite. These tests exercise only pure functions with no network or heavy dependencies.
+- **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for run.py __main__ guard: patch run.main to raise KeyboardInterrupt and assert no sys.exit, then raise a generic Exception and assert sys.exit(1) is called
+
