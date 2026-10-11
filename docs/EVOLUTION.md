@@ -642,3 +642,8 @@ Newest entries are at the bottom.
 - **Blocked by:** rejected by gate: tests/test_formula_safe_eval.py failed: test_bitwise_invert_returns_nan (tests.test_formula_safe_eval.TestCalculateFromExpressionGuards.test_bitwise_invert_returns_nan) ... [32m2026-10-11 00:36:57.98
 - **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for run.py __main__ guard: patch run.main to raise KeyboardInterrupt and assert no sys.exit, then raise a generic Exception and assert sys.exit(1) is called
 
+## 2026-10-11 08:07 UTC — Reflection: no code change landed
+- **Attempted:** Add tests for run.py main loop and __main__ guard
+- **Blocked by:** rejected by gate: tests/test_run_main_loop.py failed: FAIL: test_generic_exception_exits_with_code_one (tests.test_run_main_loop.TestMainGuard.test_generic_exception_exits_with_code_one) | self.assertIn('Error: boom', 
+- **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for formula.calculate_from_expression handling of unsupported operators like '**' and '%' (verify _SAFE_BINOPS coverage first)
+
