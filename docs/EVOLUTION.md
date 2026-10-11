@@ -647,3 +647,9 @@ Newest entries are at the bottom.
 - **Blocked by:** rejected by gate: tests/test_run_main_loop.py failed: FAIL: test_generic_exception_exits_with_code_one (tests.test_run_main_loop.TestMainGuard.test_generic_exception_exits_with_code_one) | self.assertIn('Error: boom', 
 - **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for formula.calculate_from_expression handling of unsupported operators like '**' and '%' (verify _SAFE_BINOPS coverage first)
 
+## 2026-10-11 16:05 UTC — Add tests for formula safe-eval operator guards
+- **Type:** tests
+- **Files:** tests/test_formula_safe_eval.py
+- **Why:** formula._safe_eval_node is the security boundary that replaced eval(), but no test pins its rejection behaviour for unsupported operators (Mod, FloorDiv, BitAnd, etc.), unsupported constants (str/bytes/None/complex), or unsupported unary operators (Not, Invert). A refactor that widened _SAFE_BINOPS or dropped a branch would silently reintroduce unsafe evaluation. These tests exercise only pure functions with no network or heavy dependencies.
+- **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for run.py __main__ guard: patch run.main to raise KeyboardInterrupt and assert no sys.exit, then raise a generic Exception and assert sys.exit(1) is called
+
