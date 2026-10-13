@@ -681,3 +681,9 @@ Newest entries are at the bottom.
 - **Blocked by:** unparseable JSON: Invalid control character at: line 1 column 872 (char 871)
 - **Next:** retry on tests/test_formula_cache.py, formula.py, tests/test_formula_find_formula.py
 
+## 2026-10-13 08:49 UTC — Add tests for formula.calculate_from_expression numeric coercion
+- **Type:** tests
+- **Files:** tests/test_formula_values.py
+- **Why:** calculate_from_expression is the pure-logic core used by the orchestrator, and its handling of non-float inputs (ints, bools, strings, None) and of missing variables is not pinned by any existing test. A refactor of the substitution loop or of _safe_eval_node's constant handling could silently change results for int values or crash on None. These tests exercise only pure functions from formula.py with no network or heavy dependencies, and every assertion was verified against the current implementation.
+- **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for formula.calculate_from_expression handling of unsupported operators like '**' and '%' (verify _SAFE_BINOPS coverage first)
+
