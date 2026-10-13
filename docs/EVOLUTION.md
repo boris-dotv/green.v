@@ -676,3 +676,8 @@ Newest entries are at the bottom.
 - **Blocked by:** rejected by gate: tests/test_formula_values.py failed: FAIL: test_bool_values_are_accepted (tests.test_formula_values.TestNumericCoercion.test_bool_values_are_accepted) | self.assertEqual(calculate_from_expression('A +
 - **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for formula.calculate_from_expression handling of unsupported operators like '**' and '%' (verify _SAFE_BINOPS coverage first)
 
+## 2026-10-13 01:45 UTC — Reflection: no code change landed
+- **Attempted:** parse model plan
+- **Blocked by:** unparseable JSON: Invalid control character at: line 1 column 872 (char 871)
+- **Next:** retry on tests/test_formula_cache.py, formula.py, tests/test_formula_find_formula.py
+
