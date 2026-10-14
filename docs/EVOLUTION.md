@@ -710,3 +710,9 @@ Newest entries are at the bottom.
 - **Blocked by:** rejected by gate: tests/test_formula_nesting.py failed: test_empty_string_yields_nan (tests.test_formula_nesting.TestBlankExpressions.test_empty_string_yields_nan) ... [32m2026-10-14 09:11:44.295[0m | [31m[1mERROR 
 - **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for formula.calculate_from_expression handling of very large exponents (e.g. 'A ** 10000') returning NaN via OverflowError
 
+## 2026-10-14 14:48 UTC — Add tests for formula nested parens and blank expressions
+- **Type:** tests
+- **Files:** tests/test_formula_nesting.py
+- **Why:** The evolution log's most recent 'Next' idea asks for tests covering deeply nested parentheses and whitespace-only expressions in formula.calculate_from_expression, and the previous attempt at this was rejected by the gate. Reading the implementation shows blank/whitespace-only input raises SyntaxError from ast.parse and is caught, returning NaN, while nested parentheses and redundant grouping evaluate normally. Pinning both behaviours protects the public entry point from a refactor of the substitution or exception handling.
+- **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for formula.calculate_from_expression handling of very large exponents (e.g. 'A ** 10000') returning NaN via OverflowError
+
