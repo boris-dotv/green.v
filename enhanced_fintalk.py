@@ -362,12 +362,6 @@ If no function matches, return {{"function_name": "none"}}"""
             logger.error(f"General query function execution error: {func_result['error']}")
             return func_result["error"]
 
-        if "error" not in func_result:
-            return self.nlg.generate_answer(query, func_result)
-        else:
-            logger.error(f"General query function execution error: {func_result['error']}")
-            return func_result["error"]
-
     def close(self):
         """清理资源"""
         if self.adapter:
