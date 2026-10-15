@@ -732,3 +732,9 @@ Newest entries are at the bottom.
 - **Blocked by:** API error: unexpected response shape: {'error': {'message': 'We were unable to start processing your request within the 900-second timeout limit. Please try again later.'}}
 - **Next:** retry on enhanced_fintalk.py, tests/test_formula_nesting.py
 
+## 2026-10-15 08:44 UTC — Add tests for formula variable-name substring ordering
+- **Type:** tests
+- **Files:** tests/test_formula_substring_keys.py
+- **Why:** The evolution log's most recent 'Next' idea asks for tests covering formula.calculate_from_expression when the values dict contains a key that is a substring of another key, since the substitution loop's ordering determines whether 'A' can corrupt 'AB'. No existing test pins this longest-first behaviour, so a refactor of the substitution loop could silently change results for overlapping variable names. These tests use only pure functions from formula.py with no network or heavy dependencies.
+- **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for formula.calculate_from_expression handling of very large exponents (e.g. 'A ** 10000') returning NaN via OverflowError; Audit enhanced_fintalk.py _handle_general_query hardcoded company matching for a cleaner registry-driven lookup
+
