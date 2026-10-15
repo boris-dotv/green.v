@@ -148,15 +148,17 @@ def calculate_from_expression(expression: str, values: Dict[str, float]) -> floa
     # Create a local copy to avoid modifying the original dict
     local_values = values.copy()
 
-    # Sort keys by length, descending, to prevent partial replacements (e.g., "A" in "AB")
-    # Also escape special regex characters in variable names to prevent regex injection
+    # Sort keys by length, descending, so that at any position the longest
+    # matching variable name wins (e.g. "AB" before "A").
     sorted_vars = sorted(local_values.keys(), key=len, reverse=True)
-    escaped_vars = {var: re.escape(var) for var in sorted_vars}
 
-    # Replace variable names in the expression with their numerical values
-    # Use word boundaries to avoid replacing substrings (e.g., "A" in "AB")
-    for var in sorted_vars:
-        expression = re.sub(r'\b' + re.escape(var) + r'\b', str(local_values[var]), expression)
+    # Single-pass substitution: scan the expression left to right and replace
+    # the longest variable name that matches at the current position. This
+    # avoids corrupting longer names that start with a shorter key ("AB" ->
+    # "1.0B") which a naive regex substitution would produce.
+    if sorted_vars:
+        pattern = re.compile('|'.join(re.escape(v) for v in sorted_vars))
+        expression = pattern.sub(lambda m: str(local_values[m.group(0)]), expression)
 
     # Validate that no unexpected characters remain after substitution
     if re.search(r'[a-zA-Z_]', expression):
