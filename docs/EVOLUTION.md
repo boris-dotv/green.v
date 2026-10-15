@@ -727,3 +727,8 @@ Newest entries are at the bottom.
 - **Why:** enhanced_fintalk.py's _handle_general_query contains an exact duplicate of the final if/else block (the second copy is unreachable dead code after the first return). This is a real defect: it confuses readers and any future edit to one copy would silently not apply. Removing the unreachable duplicate preserves observable behaviour exactly while making the function's control flow honest.
 - **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for formula.calculate_from_expression when values dict contains a key that is a substring of another key (longest-first ordering); Audit enhanced_fintalk.py _handle_general_query hardcoded company matching for a cleaner registry-driven lookup
 
+## 2026-10-15 02:57 UTC — Reflection: no code change landed
+- **Attempted:** call DeepSeek for an improvement
+- **Blocked by:** API error: unexpected response shape: {'error': {'message': 'We were unable to start processing your request within the 900-second timeout limit. Please try again later.'}}
+- **Next:** retry on enhanced_fintalk.py, tests/test_formula_nesting.py
+
