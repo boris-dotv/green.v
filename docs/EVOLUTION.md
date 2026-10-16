@@ -755,3 +755,9 @@ Newest entries are at the bottom.
 - **Blocked by:** rejected by gate: edit 0: 'old' occurs 0 times in formula.py (need exactly 1)
 - **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Add tests for formula.calculate_from_expression handling of very large exponents (e.g. 'A ** 10000') returning NaN via OverflowError; Audit enhanced_fintalk.py _handle_general_query hardcoded company matching for a cleaner registry-driven lookup
 
+## 2026-10-16 02:39 UTC — Add tests for formula division-by-zero and overflow paths
+- **Type:** tests
+- **Files:** tests/test_formula_division_and_overflow.py
+- **Why:** The evolution log repeatedly lists untested error paths in formula.calculate_from_expression, and the existing tests cover substitution and operator rejection but not the explicit division-by-zero pre-check, the ZeroDivisionError catch, or the OverflowError catch for huge exponents. Pinning these behaviours protects the NaN contract that callers (enhanced_fintalk, function_registry) rely on. All assertions were verified by reading the current implementation, and the tests use only the standard library.
+- **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Audit enhanced_fintalk.py _handle_general_query hardcoded company matching for a cleaner registry-driven lookup
+
