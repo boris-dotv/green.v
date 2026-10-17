@@ -819,3 +819,8 @@ Newest entries are at the bottom.
 - **Blocked by:** rejected by gate: tests/test_streaming_nlg_streaming.py failed: RuntimeError: boom | ERROR: test_non_string_prompt_yields_error_without_http (tests.test_streaming_nlg_streaming.TestGenerateStreaming.test_non_string_pro
 - **Next:** Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Audit enhanced_fintalk.py _handle_general_query hardcoded company matching for a cleaner registry-driven lookup; Add tests for StreamingNLG.generate_streaming when response.raise_for_status raises a requests RequestException subclass
 
+## 2026-10-17 23:44 UTC — Reflection: no code change landed
+- **Attempted:** Add tests for StreamingNLG.generate_streaming error paths
+- **Blocked by:** rejected by gate: tests/test_streaming_nlg_streaming.py failed: AttributeError: 'str' object has no attribute 'decode' | AttributeError: 'str' object has no attribute 'decode' | FAIL: test_empty_prompt_yields_error_wit
+- **Next:** Verify enhanced_core/streaming_nlg.py generate_streaming catches requests exceptions and add a test for that path; Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Audit enhanced_fintalk.py _handle_general_query hardcoded company matching for a cleaner registry-driven lookup
+
