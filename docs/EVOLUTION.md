@@ -785,3 +785,8 @@ Newest entries are at the bottom.
 - **Why:** The evolution log's recurring 'Next' ideas keep pointing at untested substitution edge cases in formula.calculate_from_expression. Existing tests cover prefix keys, regex metacharacter keys, and unknown longer tokens, but not variable names that look like numbers (e.g. '1', '2.5') or keys that collide with numeric literals in the expression. Since the substitution loop builds a single regex alternation over the keys, a numeric-looking key could interact badly with the surrounding arithmetic. These tests pin the current verified behaviour using only the pure public function, protecting the subs
 - **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Audit enhanced_fintalk.py _handle_general_query hardcoded company matching for a cleaner registry-driven lookup
 
+## 2026-10-17 02:30 UTC — Reflection: no code change landed
+- **Attempted:** Add tests for formula.calculate_from_expression operator handling
+- **Blocked by:** rejected by gate: new_file 0: tests/test_formula_operators.py already exists
+- **Next:** Add tests for StreamingNLG.generate_streaming input validation using a fake requests.post returning iter_lines (verify _parse_stream_line signature first); Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Audit enhanced_fintalk.py _handle_general_query hardcoded company matching for a cleaner registry-driven lookup
+
