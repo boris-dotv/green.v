@@ -47,14 +47,14 @@ class StreamingNLG:
         """
         import requests
 
-        if not prompt or not prompt.strip():
-            logger.warning("Empty prompt provided to generate_streaming")
-            yield "[Error: Empty prompt]"
-            return
-        # Add a type check for prompt to ensure it's a string
+        # Type check must come first: a non-string has no .strip()
         if not isinstance(prompt, str):
             logger.warning(f"Non-string prompt provided: {type(prompt)}")
             yield "[Error: Invalid prompt type]"
+            return
+        if not prompt.strip():
+            logger.warning("Empty prompt provided to generate_streaming")
+            yield "[Error: Empty prompt]"
             return
 
         payload = {
@@ -80,7 +80,8 @@ class StreamingNLG:
                 if not line:
                     continue
 
-                line = line.decode('utf-8')
+                if isinstance(line, bytes):
+                    line = line.decode('utf-8', errors='replace')
                 if line.startswith('data: '):
                     data_str = line[6:]
                     if data_str == '[DONE]':

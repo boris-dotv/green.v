@@ -829,3 +829,9 @@ Newest entries are at the bottom.
 - **Blocked by:** rejected by gate: tests/test_streaming_nlg_streaming.py failed: ValueError: weird | ERROR: test_non_string_prompt_yields_error_without_http (tests.test_streaming_nlg_streaming.TestGenerateStreaming.test_non_string_prom
 - **Next:** Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Audit enhanced_fintalk.py _handle_general_query hardcoded company matching for a cleaner registry-driven lookup; Add tests for StreamingNLG.generate_answer when response.json() lacks 'choices' key
 
+## 2026-10-18 08:28 UTC — Fix generate_streaming type check ordering and decode
+- **Type:** bugfix
+- **Files:** enhanced_core/streaming_nlg.py, tests/test_streaming_nlg_streaming.py
+- **Why:** In enhanced_core/streaming_nlg.py, generate_streaming calls prompt.strip() before the isinstance(prompt, str) check, so a non-string prompt raises AttributeError instead of yielding the intended '[Error: Invalid prompt type]'. Also iter_lines(decode_unicode=False) yields bytes, but the code calls line.decode('utf-8') unconditionally, which fails if a fake/real response yields str. Reordering the type check and decoding only bytes fixes both real defects while preserving the public signature and yielded output.
+- **Next:** Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Audit enhanced_fintalk.py _handle_general_query hardcoded company matching for a cleaner registry-driven lookup; Add tests for StreamingNLG.generate_answer when response.json() lacks 'choices' key
+
