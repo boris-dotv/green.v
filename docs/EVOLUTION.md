@@ -847,3 +847,8 @@ Newest entries are at the bottom.
 - **Why:** The recurring 'Next' idea is to cover StreamingNLG.generate_answer data truncation when json.dumps exceeds 5000 chars. The implementation truncates data_str and appends '... (truncated)' before building the prompt; no existing test pins this branch. These tests use the same fake requests module pattern as test_streaming_nlg_answer_fallbacks.py, capture the posted payload, and verify the truncation marker appears in the prompt while the fallback/valid paths still work, with no network or heavy deps.
 - **Next:** Document ConversationManager context keys in API_REFERENCE.md; Add tests for FinancialFunctionRegistry._compare_companies when one company is unknown; Audit enhanced_fintalk.py _handle_general_query hardcoded company matching for a cleaner registry-driven lookup; Add tests for StreamingNLG.generate_streaming when response.raise_for_status raises a requests RequestException subclass
 
+## 2026-10-18 19:56 UTC — Reflection: no code change landed
+- **Attempted:** Add tests for FinancialFunctionRegistry._compare_companies edge cases
+- **Blocked by:** rejected by gate: tests/test_function_registry_compare_companies.py failed: ERROR: test_empty_company_list (tests.test_function_registry_compare_companies.TestCompareCompanies.test_empty_company_list) | TypeError: Fina
+- **Next:** Verify FinancialFunctionRegistry._compare_companies return shape against the new tests and adjust if the implementation differs; Document ConversationManager context keys in API_REFERENCE.md; Audit enhanced_fintalk.py _handle_general_query hardcoded company matching for a cleaner registry-driven lookup; Add tests for StreamingNLG.generate_streaming when response.raise_for_status raises a requests RequestException subclass
+
