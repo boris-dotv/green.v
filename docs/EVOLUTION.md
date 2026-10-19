@@ -857,3 +857,9 @@ Newest entries are at the bottom.
 - **Blocked by:** rejected by gate: tests/test_enhanced_fintalk_general_query_errors.py failed: ERROR: test_enhanced_fintalk_general_query_errors (unittest.loader._FailedTest.test_enhanced_fintalk_general_query_errors) | ImportError: Fa
 - **Next:** Document ConversationManager context keys in API_REFERENCE.md; Verify FinancialFunctionRegistry._compare_companies return shape before adding tests (last attempt failed with TypeError); Add tests for StreamingNLG.generate_streaming when response.raise_for_status raises a requests RequestException subclass; Audit enhanced_fintalk.py _handle_general_query hardcoded company matching for a cleaner registry-driven lookup
 
+## 2026-10-19 02:45 UTC — Add tests for _handle_general_query error and fintalk paths
+- **Type:** tests
+- **Files:** tests/test_enhanced_fintalk_general_query_errors.py
+- **Why:** The recurring 'Next' idea is to audit enhanced_fintalk.py _handle_general_query. A previous attempt failed with an ImportError because it imported the module without stubbing heavy deps (pandas, OSWorld adapter, enhanced_core). This run pins the verified behaviour of the pure method by constructing the instance via __new__ and injecting a fake function_registry and fake nlg, avoiding all heavy imports. It covers the fintalk branch, the unknown-company guidance message, the success path, and the error branch.
+- **Next:** Document ConversationManager context keys in API_REFERENCE.md; Verify FinancialFunctionRegistry._compare_companies return shape before adding tests (last attempt failed with TypeError); Add tests for StreamingNLG.generate_streaming when response.raise_for_status raises a requests RequestException subclass; Audit enhanced_fintalk.py _handle_general_query hardcoded company matching for a cleaner registry-driven lookup
+
