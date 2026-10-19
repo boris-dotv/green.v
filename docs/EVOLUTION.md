@@ -868,3 +868,9 @@ Newest entries are at the bottom.
 - **Blocked by:** rejected by gate: tests/test_enhanced_fintalk_task_query.py failed: FAIL: test_no_function_call_falls_back_to_general_query (tests.test_enhanced_fintalk_task_query.TestHandleTaskQuery.test_no_function_call_falls_back_t
 - **Next:** Document ConversationManager context keys in API_REFERENCE.md; Verify FinancialFunctionRegistry._compare_companies return shape before adding tests (last attempt failed with TypeError); Add tests for StreamingNLG.generate_streaming when response.raise_for_status raises a requests RequestException subclass; Audit enhanced_fintalk.py _handle_general_query hardcoded company matching for a cleaner registry-driven lookup
 
+## 2026-10-19 16:44 UTC — Add tests for _handle_task_query success and error paths
+- **Type:** tests
+- **Files:** tests/test_enhanced_fintalk_task_query.py
+- **Why:** The recurring 'Next' idea is to audit enhanced_fintalk.py _handle_task_query. A prior attempt failed because it asserted the no-function-call fallback incorrectly. Reading the implementation: when _extract_function_call returns a dict, execute() is called; if the result has no 'error' key, nlg.generate_answer is used, otherwise a '抱歉，{error}' string is returned. When no function call is extracted, it falls through to _handle_general_query and returns '抱歉，我无法处理您的查询。' only if that returns falsy. These tests pin the verified branches by constructing the instance via __new__ with fake collaborator
+- **Next:** Document ConversationManager context keys in API_REFERENCE.md; Verify FinancialFunctionRegistry._compare_companies return shape before adding tests (last attempt failed with TypeError); Add tests for StreamingNLG.generate_streaming when response.raise_for_status raises a requests RequestException subclass; Audit enhanced_fintalk.py _handle_general_query hardcoded company matching for a cleaner registry-driven lookup
+
