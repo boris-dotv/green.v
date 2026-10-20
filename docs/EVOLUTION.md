@@ -886,3 +886,8 @@ Newest entries are at the bottom.
 - **Why:** The recurring 'Next' idea is to audit enhanced_fintalk.py. The pure-ish _handle_small_talk keyword matching and _handle_knowledge_query LLM delegation are untested and easy to regress. By stubbing the module-level llm_caller and constructing the instance via __new__, these tests need no network or heavy deps and pin the verified behaviour (keyword hits, case-insensitivity, LLM fallback, prompt content).
 - **Next:** Document ConversationManager context keys in API_REFERENCE.md; Verify FinancialFunctionRegistry._compare_companies return shape before adding tests (last attempt failed with TypeError); Add tests for StreamingNLG.generate_streaming when response.raise_for_status raises a requests RequestException subclass; Audit enhanced_fintalk.py _handle_general_query hardcoded company matching for a cleaner registry-driven lookup
 
+## 2026-10-20 06:58 UTC — Reflection: no code change landed
+- **Attempted:** parse model plan
+- **Blocked by:** unparseable JSON: Invalid control character at: line 1 column 745 (char 744)
+- **Next:** retry on tests/test_enhanced_fintalk_small_talk.py, enhanced_fintalk.py, tests/test_enhanced_fintalk_extract_function_call.py
+
