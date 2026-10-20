@@ -282,6 +282,9 @@ class EnhancedFinTalkAI:
         """处理知识查询"""
         logger.info(f"   📚 Handling as knowledge query")
 
+        if not query:
+            return "请提供你想了解的金融概念。"
+
         return llm_caller(
             f"用简单的话解释这个金融概念（100字以内）：{query}",
             temperature=0.7
