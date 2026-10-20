@@ -880,3 +880,9 @@ Newest entries are at the bottom.
 - **Why:** The recurring 'Next' idea is to audit enhanced_fintalk.py. _extract_function_call is a pure-ish parsing method whose branches (code-fence stripping, JSON extraction, 'none' sentinel, malformed JSON) are untested and easy to regress. By stubbing the module-level llm_caller via the module object and constructing the instance via __new__ with a fake registry, these tests need no network or heavy deps and pin the verified behaviour of the current implementation.
 - **Next:** Document ConversationManager context keys in API_REFERENCE.md; Verify FinancialFunctionRegistry._compare_companies return shape before adding tests (last attempt failed with TypeError); Add tests for StreamingNLG.generate_streaming when response.raise_for_status raises a requests RequestException subclass; Audit enhanced_fintalk.py _handle_general_query hardcoded company matching for a cleaner registry-driven lookup
 
+## 2026-10-20 00:51 UTC — Add tests for _handle_small_talk and _handle_knowledge_query
+- **Type:** tests
+- **Files:** tests/test_enhanced_fintalk_small_talk.py
+- **Why:** The recurring 'Next' idea is to audit enhanced_fintalk.py. The pure-ish _handle_small_talk keyword matching and _handle_knowledge_query LLM delegation are untested and easy to regress. By stubbing the module-level llm_caller and constructing the instance via __new__, these tests need no network or heavy deps and pin the verified behaviour (keyword hits, case-insensitivity, LLM fallback, prompt content).
+- **Next:** Document ConversationManager context keys in API_REFERENCE.md; Verify FinancialFunctionRegistry._compare_companies return shape before adding tests (last attempt failed with TypeError); Add tests for StreamingNLG.generate_streaming when response.raise_for_status raises a requests RequestException subclass; Audit enhanced_fintalk.py _handle_general_query hardcoded company matching for a cleaner registry-driven lookup
+
