@@ -891,3 +891,9 @@ Newest entries are at the bottom.
 - **Blocked by:** unparseable JSON: Invalid control character at: line 1 column 745 (char 744)
 - **Next:** retry on tests/test_enhanced_fintalk_small_talk.py, enhanced_fintalk.py, tests/test_enhanced_fintalk_extract_function_call.py
 
+## 2026-10-20 13:11 UTC — Guard _handle_small_talk against None query
+- **Type:** bugfix
+- **Files:** enhanced_fintalk.py, tests/test_enhanced_fintalk_small_talk_none.py
+- **Why:** _handle_small_talk calls query.lower() unconditionally, so a None query (possible when the rewriter/arbitrator returns nothing) raises AttributeError instead of degrading gracefully. _handle_knowledge_query and _extract_function_call similarly assume a str. Adding a small guard in _handle_small_talk keeps the public signature and observable behaviour for valid strings while making the path robust, and I add tests pinning the None/empty behaviour.
+- **Next:** Guard _handle_knowledge_query and _extract_function_call in enhanced_fintalk.py against None query; Document ConversationManager context keys in API_REFERENCE.md; Verify FinancialFunctionRegistry._compare_companies return shape before adding tests (last attempt failed with TypeError); Add tests for StreamingNLG.generate_streaming when response.raise_for_status raises a requests RequestException subclass
+

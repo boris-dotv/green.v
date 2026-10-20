@@ -298,7 +298,7 @@ class EnhancedFinTalkAI:
             "bye": "再见！祝你一切顺利！"
         }
 
-        query_lower = query.lower()
+        query_lower = (query or "").lower()
         for key, response in responses.items():
             if key in query_lower:
                 return response
