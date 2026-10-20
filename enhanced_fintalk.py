@@ -307,6 +307,9 @@ class EnhancedFinTalkAI:
 
     def _extract_function_call(self, query: str) -> Optional[Dict]:
         """提取function call"""
+        if not query:
+            return None
+
         functions_json = json.dumps(self.function_registry.get_functions(), ensure_ascii=False)
 
         prompt = f"""You are a financial function calling expert. Extract the function call from this query.
@@ -345,7 +348,7 @@ If no function matches, return {{"function_name": "none"}}"""
     def _handle_general_query(self, query: str) -> str:
         """处理通用查询"""
         # 简单处理：如果有公司名，返回公司信息
-        query_lower = query.lower()
+        query_lower = (query or "").lower()
         if "za bank" in query_lower:
             func_result = self.function_registry.execute("get_company_info", {"company_name": "ZA Bank"})
         elif "welab" in query_lower or "welab bank" in query_lower:
