@@ -909,3 +909,8 @@ Newest entries are at the bottom.
 - **Why:** _handle_knowledge_query interpolates query directly into the prompt, so a None query embeds the literal 'None' and sends a meaningless request to the LLM, whereas the sibling handlers _handle_small_talk, _handle_general_query and _extract_function_call were already hardened against None. Adding a small guard keeps the public signature and behaviour for valid strings while making this last path consistent and robust, and I add tests pinning the None/empty behaviour.
 - **Next:** Document ConversationManager context keys in API_REFERENCE.md; Verify FinancialFunctionRegistry._compare_companies return shape before adding tests (last attempt failed with TypeError); Add tests for StreamingNLG.generate_streaming when response.raise_for_status raises a requests RequestException subclass; Audit enhanced_fintalk.py _handle_general_query hardcoded company matching for a cleaner registry-driven lookup
 
+## 2026-10-21 02:50 UTC — Reflection: no code change landed
+- **Attempted:** Add tests for _handle_task_query success and error paths
+- **Blocked by:** rejected by gate: new_file 0: tests/test_enhanced_fintalk_task_query.py already exists
+- **Next:** Document ConversationManager context keys in API_REFERENCE.md; Verify FinancialFunctionRegistry._compare_companies return shape before adding tests (last attempt failed with TypeError); Add tests for StreamingNLG.generate_streaming when response.raise_for_status raises a requests RequestException subclass; Audit enhanced_fintalk.py _handle_general_query hardcoded company matching for a cleaner registry-driven lookup
+
