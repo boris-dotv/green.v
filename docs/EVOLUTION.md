@@ -914,3 +914,9 @@ Newest entries are at the bottom.
 - **Blocked by:** rejected by gate: new_file 0: tests/test_enhanced_fintalk_task_query.py already exists
 - **Next:** Document ConversationManager context keys in API_REFERENCE.md; Verify FinancialFunctionRegistry._compare_companies return shape before adding tests (last attempt failed with TypeError); Add tests for StreamingNLG.generate_streaming when response.raise_for_status raises a requests RequestException subclass; Audit enhanced_fintalk.py _handle_general_query hardcoded company matching for a cleaner registry-driven lookup
 
+## 2026-10-21 09:02 UTC — Add tests for _handle_task_query None query guard
+- **Type:** tests
+- **Files:** tests/test_enhanced_fintalk_task_query_none.py
+- **Why:** The recurring 'Next' idea is to audit enhanced_fintalk.py handlers. _handle_task_query passes its query to _extract_function_call, which already guards against None and returns None, so the method falls through to _handle_general_query. That fallback path with a None/falsy query is untested and easy to regress. These tests pin the verified behaviour using __new__ and injected fakes, needing no network or heavy deps.
+- **Next:** Document ConversationManager context keys in API_REFERENCE.md; Verify FinancialFunctionRegistry._compare_companies return shape before adding tests (last attempt failed with TypeError); Add tests for StreamingNLG.generate_streaming when response.raise_for_status raises a requests RequestException subclass; Audit enhanced_fintalk.py _handle_general_query hardcoded company matching for a cleaner registry-driven lookup
+
