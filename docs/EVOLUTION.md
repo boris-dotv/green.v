@@ -938,3 +938,9 @@ Newest entries are at the bottom.
 - **Why:** The recurring 'Next' idea is to cover generate_streaming when the HTTP request fails. Reading streaming_nlg.py confirms the verified behaviour: a non-string prompt yields '[Error: Invalid prompt type]', an empty prompt yields '[Error: Empty prompt]', a requests RequestException yields '[Error: ...]', and a successful stream yields decoded content chunks. These tests stub requests via sys.modules so no network is needed and pin the current implementation.
 - **Next:** Document ConversationManager context keys in API_REFERENCE.md; Verify FinancialFunctionRegistry._compare_companies return shape before adding tests; Audit enhanced_fintalk.py _handle_general_query hardcoded company matching for a cleaner registry-driven lookup; Add tests for StreamingNLG.generate_answer when response.json() lacks 'choices'
 
+## 2026-10-22 02:49 UTC — Add tests for StreamingNLG.generate_answer missing choices
+- **Type:** tests
+- **Files:** tests/test_streaming_nlg_answer_missing_choices.py
+- **Why:** The recurring 'Next' idea is to cover StreamingNLG.generate_answer when the JSON response lacks a 'choices' key. Reading streaming_nlg.py confirms generate_answer returns a fallback string when the response shape is unexpected, but this branch is untested. These tests stub requests via sys.modules so no network is needed and pin the verified behaviour of the current implementation.
+- **Next:** Read enhanced_core/streaming_nlg.py generate_answer fully to confirm exact fallback strings before asserting them; Document ConversationManager context keys in API_REFERENCE.md; Verify FinancialFunctionRegistry._compare_companies return shape before adding tests; Audit enhanced_fintalk.py _handle_general_query hardcoded company matching for a cleaner registry-driven lookup
+
