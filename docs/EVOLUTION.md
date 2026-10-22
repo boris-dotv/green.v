@@ -944,3 +944,8 @@ Newest entries are at the bottom.
 - **Why:** The recurring 'Next' idea is to cover StreamingNLG.generate_answer when the JSON response lacks a 'choices' key. Reading streaming_nlg.py confirms generate_answer returns a fallback string when the response shape is unexpected, but this branch is untested. These tests stub requests via sys.modules so no network is needed and pin the verified behaviour of the current implementation.
 - **Next:** Read enhanced_core/streaming_nlg.py generate_answer fully to confirm exact fallback strings before asserting them; Document ConversationManager context keys in API_REFERENCE.md; Verify FinancialFunctionRegistry._compare_companies return shape before adding tests; Audit enhanced_fintalk.py _handle_general_query hardcoded company matching for a cleaner registry-driven lookup
 
+## 2026-10-22 09:04 UTC — Reflection: no code change landed
+- **Attempted:** call DeepSeek for an improvement
+- **Blocked by:** API error: HTTP 401: {'error':{'message':'Authentication Fails, Your api key: ****41c3 is invalid (request_id: 21c9339e-1765-4881-b9e4-faa57b4f365c)','type':'authentication_error','param':null,'code':'invalid_re
+- **Next:** retry on tests/test_streaming_nlg_answer_missing_choices.py, enhanced_core/streaming_nlg.py, enhanced_fintalk.py
+
