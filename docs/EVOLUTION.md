@@ -1084,3 +1084,8 @@ Newest entries are at the bottom.
 - **Blocked by:** API error: HTTP 401: {'error':{'message':'Authentication Fails, Your api key: ****41c3 is invalid (request_id: 567e23b6-3699-463d-8ecf-505923e1e268)','type':'authentication_error','param':null,'code':'invalid_re
 - **Next:** retry on tests/test_streaming_nlg_answer_missing_choices.py, enhanced_core/streaming_nlg.py, enhanced_fintalk.py
 
+## 2026-10-28 00:51 UTC — Reflection: no code change landed
+- **Attempted:** call DeepSeek for an improvement
+- **Blocked by:** API error: HTTP 401: {'error':{'message':'Authentication Fails, Your api key: ****41c3 is invalid (request_id: fb1ab835-bce0-4366-88ff-785b5e7a93f9)','type':'authentication_error','param':null,'code':'invalid_re
+- **Next:** retry on tests/test_streaming_nlg_answer_missing_choices.py, enhanced_core/streaming_nlg.py, enhanced_fintalk.py
+
